@@ -3,7 +3,7 @@ morgan = require('morgan');
 
 const app = express();
 
-let topMovies = [{
+const movies = [{
     title: 'The Grand Budapest Hotel',
     imageURL: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1',
     year: '2014',
@@ -175,6 +175,14 @@ let topMovies = [{
     featured: 'false'
   }
 ];
+
+const user = {
+  id: 1,
+  username: 'JohnDoe',
+  password: 'myPassword123!',
+  email: 'johnDoe@gmail.com',
+  dob: '2000-06-21'
+}
 
 app.use(express.static('public'));
 app.use(morgan('common'));
