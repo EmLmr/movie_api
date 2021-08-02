@@ -2,48 +2,195 @@
 
 <html lang="en" dir="ltr">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie API Documentation</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"> <!-- font-family: 'Roboto', sans-serif; -->
-    <!-- <link rel="shortcut icon" href="" type="image/png" /> -->
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movie API Documentation</title>
+  <!-- <link rel="shortcut icon" href="" type="image/png" /> -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css" />
 
-  <body>
-    <header>
-      <h1> Movie API Documentation </h1>
-    </header>
+</head>
 
-    <main>
-      <h2>Objectives</h2>
-      <p>
-        This API will enable users to receive information on movies, directors and genres.<br>
-        Users will be able to create a profile in order to save a list of their favorite movies.<br>
-        The user can also log in to their profile to enter and modify personal data.
-      </p>
-      <h3>Essential features in detail</h3>
-      <ul>
-        <li>Return a list of ALL movies to the user</li>
-        <li>Return data (description, genre, director, image URL, whether it’s featured or not) about a
-          single movie by title to the user</li>
-        <li>Return data about a genre (description) by name/title (e.g., “Thriller”)</li>
-        <li>Return data about a director (bio, birth year, death year) by name</li>
-        <li>Allow new users to register</li>
-        <li>Allow users to update their user info (username, password, email, date of birth)</li>
-        <li>Allow users to add a movie to their list of favorites</li>
-        <li>Allow users to remove a movie from their list of favorites</li>
-        <li>Allow existing users to deregister</li>
-      </ul>
+<body class="w-75 m-auto">
+  <header>
+    <h1> Movie API Documentation </h1>
+  </header>
 
-      <h2>Tech stack</h2>
-      <ul>
-        <li>Frontend: HTML, CSS, JavaScript</li>
-        <li>Backend: Node.js, Express, MongoDB, Mongoose</li>
-      </ul>
-    </main>
-  </body>
+  <main>
+    <h2>Objectives</h2>
+    <p>
+      This API will enable users to receive information on movies, directors and genres.<br>
+      Users will be able to create a profile in order to save a list of their favorite movies.<br>
+      The user can also log in to their profile to enter and modify personal data.
+    </p>
+    <h3>Essential features in detail</h3>
+    <ul>
+      <li>Return a list of ALL movies to the user</li>
+      <li>Return data (description, genre, director, image URL, whether it’s featured or not) about a
+        single movie by title to the user</li>
+      <li>Return data about a genre (description) by name/title (e.g., “Thriller”)</li>
+      <li>Return data about a director (bio, birth year, death year) by name</li>
+      <li>Allow new users to register</li>
+      <li>Allow users to update their user info (username, password, email, date of birth)</li>
+      <li>Allow users to add a movie to their list of favorites</li>
+      <li>Allow users to remove a movie from their list of favorites</li>
+      <li>Allow existing users to deregister</li>
+    </ul>
+
+    <h2>Endpoints</h2>
+    <div class="table-container table-responsive-xl">
+      <table class="table table-striped table-hover table-bordered  align-middle w-75 m-auto">
+        <thead>
+          <tr class="table-info">
+            <th scope="col" class="col-3">Request</th>
+            <th scope="col" class="col-2">URL</th>
+            <th scope="col" class="col-1">HTTP method</th>
+            <th scope="col" class="col-2">Request format</th>
+            <th scope="col" class="col-4">Response format</th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr>
+        <td>Return a list of ALL movies.</td>
+        <td>/movies</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about all the movies.</td>
+      </tr>
+
+      <tr>
+        <td>Return data about a single movie by title.</td>
+        <td>/movies/[Title]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a single movie:
+          <br><code> {
+            <br> title: "The Grand Budapest Hotel",
+            <br> imageURL: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1",
+            <br> year: "2014",
+            <br> genres: ["Adventure", "Comedy", "Crime"],
+            <br> description: "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+            <br> director: {
+              <br> name: "Wes Anderson",
+              <br> bio: "Wesley Wales Anderson was born in Houston, Texas.[...]",
+              <br> born: "01.05.1969",
+              <br> died: "-"
+              <br> },
+              <br> featured: "yes"
+            <br>} </code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Return data about a genre by movie title.</td>
+        <td>/movies/genres/[Title]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a genre:
+          <br /><code> {
+            <br> genres: ["Adventure", "Comedy", "Crime"],
+            <br> title: "The Grand Budapest Hotel"
+          <br>} </code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Return data about a director by name.</td>
+        <td>/movies/directors/[Name]</td>
+        <td>GET</td>
+        <td>None</td>
+        <td>A JSON object holding data about a director:
+          <br /><code> {
+            <br> name: "Wes Anderson"
+            <br> bio: "Wesley Wales Anderson was born in Houston, Texas.[...]",
+            <br> born: "01.05.1969"
+            <br> died: "-"
+          <br> } </code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Allow new users to register.</td>
+        <td>/users</td>
+        <td>POST</td>
+        <td>A JSON object holding data about the registered users, based on the user's input
+          <br><code> {
+            <br> username: "JohnDoe"
+            <br> password: "myPassword123!"
+            <br> email: "johnDoe@gmail.com"
+            <br> dob: "2000-06-21"
+          <br> } </code>
+        </td>
+        <td>A response indicating whether the user was successfully registered.
+          <br>A JSON object holding data about the user that was registered, creating a unique user ID:
+          <br /><code> {
+            <br> id: 1,
+            <br> username: "JohnDoe",
+            <br> password: "myPassword123!",
+            <br> email: "johnDoe@gmail.com",
+            <br> dob: "2000-06-21"
+          <br> } </code>
+        </td>
+      </tr>
+
+      <tr>
+        <td>Allow users to update their username.</td>
+        <td>/users/[Username]</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A plain text message indicating whether the user info was successfully updated or not</td>
+      </tr>
+
+      <tr>
+        <td>Allow existing users to deregister.</td>
+        <td>/users/[Username]</td>
+        <td>DELETE</td>
+        <td>A JSON object showing the current user data:
+          <br /><code> {
+            <br> id: 1,
+            <br> username: "JohnDoe",
+            <br> password: "myPassword123!",
+            <br> email: "johnDoe@gmail.com",
+            <br> dob: "2000-06-21"
+          <br> } </code></td>
+        <td>A plain text message indicating whether deregistration was successfull or not.</td>
+      </tr>
+
+      <tr>
+        <td>Allow users to add a movie to their list of favorites.</td>
+        <td>/movies/users/[Username]/favorites</td>
+        <td>PUT</td>
+        <td>None</td>
+        <td>A plain text message indicating whether the movie was successfully added or not.</td>
+      </tr>
+
+      <tr>
+        <td>Allow users to remove a movie from their list of favorites.</td>
+        <td>movies/users/[Username]/favorites</td>
+        <td>DELETE</td>
+        <td>A JSON object holding data about the movie that's just been added to the favorites:
+          <br> <code> {
+            <br> title: "title"
+          <br> } </code>
+        </td>
+        <td>A plain text message indicating whether the movie was successfully removed or not.</td>
+      </tr>
+
+
+        </tbody>
+      </table>
+    </div>
+    <h2>Tech stack</h2>
+    <ul>
+      <li>Frontend: HTML, CSS, JavaScript</li>
+      <li>Backend: Node.js, Express, MongoDB, Mongoose</li>
+    </ul>
+  </main>
+</body>
 
 </html>

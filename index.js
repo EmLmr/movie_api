@@ -15,7 +15,7 @@ const movies = [{
       born: '01.05.1969',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -30,7 +30,7 @@ const movies = [{
       born: '27.03.1963',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -45,7 +45,7 @@ const movies = [{
       born: '31.10.1961',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -60,7 +60,7 @@ const movies = [{
       born: '29.04.1923',
       died: '27.11.2010'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -75,7 +75,7 @@ const movies = [{
       born: '25.08.1958',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -90,7 +90,7 @@ const movies = [{
       born: '27.03.1963',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -105,7 +105,7 @@ const movies = [{
       born: '21.02.1979',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -134,7 +134,7 @@ const movies = [{
         died: '-'
       }
     ],
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -149,7 +149,7 @@ const movies = [{
       born: '01.05.1969',
       died: '-'
     },
-    featured: 'false'
+    featured: 'yes'
   },
 
   {
@@ -172,11 +172,11 @@ const movies = [{
         died: '-'
       }
     ],
-    featured: 'false'
+    featured: 'yes'
   }
 ];
 
-const user = {
+const users = {
   id: 1,
   username: 'JohnDoe',
   password: 'myPassword123!',
