@@ -1,8 +1,8 @@
-const express = require('express'),
-  path = require('path'),
-  morgan = require('morgan'),
-  bodyParser = require('body-parser'),
-  uuid = require('uuid');
+const express = require('express');
+const path = require('path');
+const morgan = require('morgan');
+const bodyParser = require('body-parser');
+const uuid = require('uuid');
 
 const app = express();
 
@@ -11,7 +11,7 @@ const movies = [
     title: 'The Grand Budapest Hotel',
     imageURL: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1',
     year: '2014',
-    genres: ['Adventure', 'Comedy', 'Crime'],
+    genre: 'Adventure',
     description: 'A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel\'s glorious years under an exceptional concierge.',
     director: {
       name: 'Wes Anderson',
@@ -26,7 +26,7 @@ const movies = [
     title: 'Death Proof',
     imageURL: 'https://filmeserialegratis.org/wp-content/uploads/2020/04/dovada-mortii-79984-poster.jpg',
     year: '2007',
-    genres: ['Action', 'Adventure', 'Thriller'],
+    genre: 'Action',
     description: 'Two separate sets of voluptuous women are stalked at different times by a scarred stuntman who uses his "death proof" cars to execute his murderous plans.',
     director: {
       name: 'Quentin Tarantino',
@@ -41,7 +41,7 @@ const movies = [
     title: 'The Lord of the Rings: the Return of the King',
     imageURL: 'https://image.tmdb.org/t/p/original/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg',
     year: '2003',
-    genres: ['Action', 'Adventure', 'Drama'],
+    genre: 'Action',
     description: 'Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.',
     director: {
       name: 'Peter Jackson',
@@ -56,7 +56,7 @@ const movies = [
     title: 'Star Wars: Episode V - The Empire Strikes Back',
     imageURL: 'https://movieswithaplottwist.com/wp-content/uploads/2019/01/starwarsposter.jpg',
     year: '1980',
-    genres: ['Action', 'Adventure', 'Fantasy'],
+    genre: 'Action',
     description: 'After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.',
     director: {
       name: 'Irvin Kershner',
@@ -71,7 +71,7 @@ const movies = [
     title: 'Edward Scissorhands',
     imageURL: 'http://img.auctiva.com/imgdata/1/1/7/9/1/0/1/webimg/559134323_o.jpg',
     year: '1990',
-    genres: ['Drama', 'Fantasy', 'Romance'],
+    genre: 'Drama',
     description: 'An artificial man, who was incompletely constructed and has scissors for hands, leads a solitary life. Then one day, a suburban lady meets him and introduces him to her world.',
     director: {
       name: 'Tim Burton',
@@ -86,7 +86,7 @@ const movies = [
     title: 'Django Unchained',
     imageURL: 'https://vignette2.wikia.nocookie.net/filmguide/images/b/bb/Django-unchained-final-american-movie-poster.jpg/revision/latest?cb=20150109055254',
     year: '2012',
-    genres: ['Drama', 'Western'],
+    genre: 'Drama',
     description: 'With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation-owner in Mississippi.',
     director: {
       name: 'Quentin Tarantino',
@@ -101,7 +101,7 @@ const movies = [
     title: 'Get Out',
     imageURL: 'https://image.tmdb.org/t/p/original/mE24wUCfjK8AoBBjaMjho7Rczr7.jpg',
     year: '2017',
-    genres: ['Horror', 'Mystery', 'Thriller'],
+    genre: 'Horror',
     description: 'A young African-American visits his white girlfriend\'s parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.',
     director: {
       name: 'Jordan Peele',
@@ -116,7 +116,7 @@ const movies = [
     title: 'Shrek 2',
     imageURL: 'https://image.tmdb.org/t/p/w1280/oljiDFPyMY437BRRV69AzVDSiKy.jpg',
     year: '2004',
-    genres: ['Animation', 'Adventure', 'Comedy'],
+    genre: 'Animation',
     description: 'Shrek and Fiona travel to the Kingdom of Far Far Away, where Fiona\'s parents are King and Queen, to celebrate their marriage. When they arrive, they find they are not as welcome as they thought they would be.',
     director: [
       {
@@ -145,7 +145,7 @@ const movies = [
     title: 'Moonrise Kingdom',
     imageURL: 'https://is5-ssl.mzstatic.com/image/thumb/Video/v4/e8/14/c6/e814c6aa-6ff1-99f2-4d2b-45b045f4aff9/mza_901933579579271147.jpg/268x0w.jpg',
     year: '2012',
-    genres: ['Comedy', 'Drama', 'Romance'],
+    genre: 'Comedy',
     description: 'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them.',
     director: {
       name: 'Wes Anderson',
@@ -160,9 +160,9 @@ const movies = [
     title: 'Moana',
     imageURL: 'https://thedisneyblog.com/wp-content/uploads/2016/09/moana-poster-new.jpg',
     year: '2016',
-    genres: ['Animation', 'Adventure', 'Comedy'],
+    genre: 'Animation',
     description: 'In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana\'s island, she answers the Ocean\'s call to seek out the Demigod to set things right.',
-    directors: [
+    director: [
       {
         name: 'Ron Clements',
         bio: 'Ron Clements was born on April 25, 1953 in Sioux City, Iowa, USA as Ronald Francis Clements. He is a writer and director, known for Hercules (1997), Aladdin (1992) and The Princess and the Frog (2009). He has been married to Tamara Lee Glumace since February 25, 1989.',
@@ -180,13 +180,20 @@ const movies = [
   }
 ];
 
-const users = {
-  id: 1,
+const users = [
+  {
   username: 'JohnDoe',
-  password: 'myPassword123!',
+  password: 'hisPassword123!',
   email: 'johnDoe@gmail.com',
   dob: '2000-06-21'
-}
+  },
+  {
+  username: 'JaneDoe',
+  password: 'herPassword123!',
+  email: 'janeDoe@gmail.com',
+  dob: '1990-12-31'
+  }
+];
 
 app.use(express.static('public'));
 app.use(morgan('common'));
@@ -209,14 +216,14 @@ app.get('/movies', (req, res) => {
 // Movie request - Return data about a single movie, by title.
 app.get('/movies/:title', (req, res) => {
   res.json(movies.find((movie) => {
-    return movie.title === req.params.title
+    return movie.title === req.params.title;
   }));
 });
 
 // Movie request - Return data about a genre, by movie title.
-app.get('/movies/genre/:name', (req, res) => {
+app.get('/movies/genres/:genre', (req, res) => {
   res.json(movies.find((movie) => {
-    return movie.genres.name === req.params.name;
+    return movie.genre === req.params.genre;
   }));
 });
 
@@ -225,6 +232,70 @@ app.get('/movies/directors/:name', (req, res) => {
   res.json(movies.find((movie) => {
     return movie.director.name === req.params.name;
   }));
+});
+
+// User request - Return users data.
+app.get('/users', (req, res) => {
+  res.json(users);
+});
+
+// |||TO FIX||| User request - Allow new users to register.
+app.post('/users', (req, res) => {
+  let newUser = req.body;
+
+  if (!newUser.username) {
+    const message = 'Please type a username.';
+    res.status(400).send(message);
+  } else {
+    newUser.id = uuid.v4();
+    users.push(newUser);
+    const success = `The registration as "${JSON.stringify(newUser)}" has been successful!`;
+    res.status(201).send(success);
+  }
+});
+
+// |||TO FIX||| User request - Allow users to update their username.
+app.put('/users/:username', (req, res) => {
+  let user = users.find((user) => user.username === req.params.username);
+
+  if (!user) {
+    res.status(404).send('User with the name' + ' "' + req.params.username + '" ' + 'was not found.');
+  } else {
+    user.username = req.body.username;
+    res.status(201).send('User ' + ' "' + req.params.username + '" ' + ' changed their name to: ' + user.username);
+  }
+});
+
+// |||TO FIX||| User request - Allow existing users to deregister.
+app.delete('/users/:username', (req, res) => {
+  let deleteUser = users.find((deleteUser) => { return deleteUser.username === req.params.username });
+
+  if(deleteUser) {
+    users = users.filter((obj) => { return obj.username !== req.params.username });
+    res.status(201).send('User' + ' "' + req.params.username + '" ' + 'has been successfully deregistered.');
+  } else {
+      res.status(404).send('User' + '" ' + req.params.username + '" ' + 'was not found.');
+  }
+});
+
+// |||TO FIX||| User request - Allow users to add a movie to their favorites.
+app.post('/users/:username/favorites/:title', (req, res) => {
+  let newMovie = req.body;
+
+  if (!newMovie.title) {
+    const message = 'Missing title in request body!';
+    res.status(400).send(message);
+  } else {
+    newMovie.id = uuid.v4();
+    movies.push(newMovie);
+    res.status(201).send(newMovie);
+  }
+});
+
+// |||TO FIX||| User request - Allow users to remove a movie from their favorites.
+app.delete('/users/movies/:favorites', (req, res) => {
+	let userFavorite = movies.find((movie) =>
+	res.send('Movie deleted from favorites'));
 });
 
 // error-handling
