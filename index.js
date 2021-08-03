@@ -182,12 +182,14 @@ const movies = [
 
 const users = [
   {
+  id: 1,
   username: 'JohnDoe',
   password: 'hisPassword123!',
   email: 'johnDoe@gmail.com',
   dob: '2000-06-21'
   },
   {
+  id: 2,
   username: 'JaneDoe',
   password: 'herPassword123!',
   email: 'janeDoe@gmail.com',
@@ -197,6 +199,7 @@ const users = [
 
 app.use(express.static('public'));
 app.use(morgan('common'));
+app.use(bodyParser.json());
 
 // GET request to default textual response.
 app.get('/', (req, res) => {
@@ -249,12 +252,11 @@ app.post('/users', (req, res) => {
   } else {
     newUser.id = uuid.v4();
     users.push(newUser);
-    const success = `The registration as "${JSON.stringify(newUser)}" has been successful!`;
     res.status(201).send(success);
   }
 });
 
-// |||TO FIX||| User request - Allow users to update their username.
+// User request - Allow users to update their username.
 app.put('/users/:username', (req, res) => {
   let user = users.find((user) => user.username === req.params.username);
 
@@ -266,20 +268,20 @@ app.put('/users/:username', (req, res) => {
   }
 });
 
-// |||TO FIX||| User request - Allow existing users to deregister.
-app.delete('/users/:username', (req, res) => {
-  let deleteUser = users.find((deleteUser) => { return deleteUser.username === req.params.username });
+// |||TO FIX||| User request - Allow existing users to deregister, by ID.
+app.delete('/users/:id', (req, res) => {
+  let user = users.find((user) => { return user.id === req.params.id });
 
-  if(deleteUser) {
-    users = users.filter((obj) => { return obj.username !== req.params.username });
-    res.status(201).send('User' + ' "' + req.params.username + '" ' + 'has been successfully deregistered.');
+  if(user) {
+    users = users.filter((obj) => { return obj.id !== req.params.id });
+    res.status(201).send('User' + ' "' + req.params.id + '" ' + 'has been successfully deregistered.');
   } else {
-      res.status(404).send('User' + '" ' + req.params.username + '" ' + 'was not found.');
+      res.status(404).send('User' + '" ' + req.params.id + '" ' + 'was not found.');
   }
 });
 
 // |||TO FIX||| User request - Allow users to add a movie to their favorites.
-app.post('/users/:username/favorites/:title', (req, res) => {
+app.post('/users/:username/:movie/:favorites', (req, res) => {
   let newMovie = req.body;
 
   if (!newMovie.title) {
@@ -293,7 +295,7 @@ app.post('/users/:username/favorites/:title', (req, res) => {
 });
 
 // |||TO FIX||| User request - Allow users to remove a movie from their favorites.
-app.delete('/users/movies/:favorites', (req, res) => {
+app.delete('/users/:username/:movie/:favorites', (req, res) => {
 	let userFavorite = movies.find((movie) =>
 	res.send('Movie deleted from favorites'));
 });
