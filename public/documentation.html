@@ -88,7 +88,7 @@
 
       <tr>
         <td>Return data about a genre by movie title.</td>
-        <td>/movies/genres/[Title]</td>
+        <td>/movies/genres/[Genre]</td>
         <td>GET</td>
         <td>None</td>
         <td>A JSON object holding data about a genre:
@@ -163,7 +163,7 @@
 
       <tr>
         <td>Allow users to add a movie to their list of favorites.</td>
-        <td>/movies/users/[Username]/favorites</td>
+        <td>/users/[Username]/favorites/[Title]</td>
         <td>PUT</td>
         <td>None</td>
         <td>A plain text message indicating whether the movie was successfully added or not.</td>
@@ -171,7 +171,7 @@
 
       <tr>
         <td>Allow users to remove a movie from their list of favorites.</td>
-        <td>movies/users/[Username]/favorites</td>
+        <td>/users/movies/[Favorites]</td>
         <td>DELETE</td>
         <td>A JSON object holding data about the movie that's just been added to the favorites:
           <br> <code> {
