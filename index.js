@@ -296,7 +296,7 @@ app.post('/users/:id/favorites/:title', (req, res) => {
   }
 });
 
-// |||TO FIX||| User request - Allow users to remove a movie from their favorites.
+// User request - Allow users to remove a movie from their favorites.
 app.delete('/users/:id/favorites/:title', (req, res) => {
 	let userFavorite = movies.find((movie) =>
 	res.send('Movie deleted from favorites'));
