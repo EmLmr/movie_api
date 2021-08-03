@@ -1,9 +1,13 @@
-const express = require('express')
-morgan = require('morgan');
+const express = require('express'),
+  path = require('path'),
+  morgan = require('morgan'),
+  bodyParser = require('body-parser'),
+  uuid = require('uuid');
 
 const app = express();
 
-const movies = [{
+const movies = [
+  {
     title: 'The Grand Budapest Hotel',
     imageURL: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1',
     year: '2014',
@@ -187,14 +191,40 @@ const users = {
 app.use(express.static('public'));
 app.use(morgan('common'));
 
-// GET request to default textual response
+// GET request to default textual response.
 app.get('/', (req, res) => {
   res.send('Welcome to my (small-for-now) movie library!');
 });
 
-// GET to the /movies endpoint
+// Return "documentation" page.
+app.get('/documentation', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/documentation.html'));
+});
+
+// Movie request - Return all movies.
 app.get('/movies', (req, res) => {
-  res.json(topMovies);
+  res.json(movies);
+});
+
+// Movie request - Return data about a single movie, by title.
+app.get('/movies/:title', (req, res) => {
+  res.json(movies.find((movie) => {
+    return movie.title === req.params.title
+  }));
+});
+
+// Movie request - Return data about a genre, by movie title.
+app.get('/movies/genre/:name', (req, res) => {
+  res.json(movies.find((movie) => {
+    return movie.genres.name === req.params.name;
+  }));
+});
+
+// Movie request - Return data about a director, by name.
+app.get('/movies/directors/:name', (req, res) => {
+  res.json(movies.find((movie) => {
+    return movie.director.name === req.params.name;
+  }));
 });
 
 // error-handling
