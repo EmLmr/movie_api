@@ -247,11 +247,12 @@ app.post('/users', (req, res) => {
   let newUser = req.body;
 
   if (!newUser.username) {
-    const message = 'Please type a username.';
-    res.status(400).send(message);
+    const newUserFail = 'Please type a username.';
+    res.status(400).send(newUserFail);
   } else {
     newUser.id = uuid.v4();
     users.push(newUser);
+    const newUserSuccess = 'The new user has been created!';
     res.status(201).send(success);
   }
 });
@@ -269,14 +270,14 @@ app.put('/users/:username', (req, res) => {
 });
 
 // |||TO FIX||| User request - Allow existing users to deregister, by ID.
-app.delete('/users/:id', (req, res) => {
-  let user = users.find((user) => { return user.id === req.params.id });
+app.delete('/users/:username', (req, res) => {
+  let user = users.find((user) => { return user.username === req.params.username });
 
   if(user) {
-    users = users.filter((obj) => { return obj.id !== req.params.id });
-    res.status(201).send('User' + ' "' + req.params.id + '" ' + 'has been successfully deregistered.');
+    users = users.filter((obj) => { return obj.username !== req.params.username });
+    res.status(201).send('User' + ' "' + req.params.username + '" ' + 'has been successfully deregistered.');
   } else {
-      res.status(404).send('User' + '" ' + req.params.id + '" ' + 'was not found.');
+      res.status(404).send('User' + '" ' + req.params.username + '" ' + 'was not found.');
   }
 });
 
