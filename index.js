@@ -182,14 +182,14 @@ const movies = [
 
 const users = [
   {
-  id: 1,
+  id: "1",
   username: 'JohnDoe',
   password: 'hisPassword123!',
   email: 'johnDoe@gmail.com',
   dob: '2000-06-21'
   },
   {
-  id: 2,
+  id: "2",
   username: 'JaneDoe',
   password: 'herPassword123!',
   email: 'janeDoe@gmail.com',
@@ -242,7 +242,7 @@ app.get('/users', (req, res) => {
   res.json(users);
 });
 
-// |||TO FIX||| User request - Allow new users to register.
+// |||FIX - success msg not appearing||| User request - Allow new users to register.
 app.post('/users', (req, res) => {
   let newUser = req.body;
 
@@ -270,33 +270,34 @@ app.put('/users/:username', (req, res) => {
 });
 
 // |||TO FIX||| User request - Allow existing users to deregister, by ID.
-app.delete('/users/:username', (req, res) => {
-  let user = users.find((user) => { return user.username === req.params.username });
+app.delete('/users/:id', (req, res) => {
+  let user = users.find((user) => { return user.id === req.params.id });
 
   if(user) {
-    users = users.filter((obj) => { return obj.username !== req.params.username });
-    res.status(201).send('User' + ' "' + req.params.username + '" ' + 'has been successfully deregistered.');
+    // users = users.filter((obj) => { return obj.id !== req.params.id });
+    res.status(201).send('User' + ' "' + req.params.id + '" ' + 'has been successfully deregistered.');
   } else {
-      res.status(404).send('User' + '" ' + req.params.username + '" ' + 'was not found.');
+      res.status(404).send('User' + '" ' + req.params.id + '" ' + 'was not found.');
   }
 });
 
-// |||TO FIX||| User request - Allow users to add a movie to their favorites.
-app.post('/users/:username/:movie/:favorites', (req, res) => {
+// |||FIX - success msg not appearing||| User request - Allow users to add a movie to their favorites.
+app.post('/users/:id/favorites/:title', (req, res) => {
   let newMovie = req.body;
 
   if (!newMovie.title) {
-    const message = 'Missing title in request body!';
-    res.status(400).send(message);
+    const newMovFail = 'Missing title in request body.';
+    res.status(400).send(newMovFail);
   } else {
     newMovie.id = uuid.v4();
     movies.push(newMovie);
+    const newMovSuccess = 'Movie successfully added to favorites!';
     res.status(201).send(newMovie);
   }
 });
 
 // |||TO FIX||| User request - Allow users to remove a movie from their favorites.
-app.delete('/users/:username/:movie/:favorites', (req, res) => {
+app.delete('/users/:id/favorites/:title', (req, res) => {
 	let userFavorite = movies.find((movie) =>
 	res.send('Movie deleted from favorites'));
 });
