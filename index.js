@@ -19,7 +19,7 @@ const movies = [
     director: {
       name: 'Wes Anderson',
       bio: 'Wesley Wales Anderson is an American filmmaker. His films are known for their symmetry, eccentricity and distinctive visual and narrative styles, and he is cited by some critics as a modern-day example of the auteur. Three of his films – The Royal Tenenbaums, Moonrise Kingdom, and The Grand Budapest Hotel – appeared in BBC Culture\'s 2016 poll of the greatest films since 2000.',
-      born: '01.05.1969',
+      born: '1969-05-01',
       died: '-'
     },
     featured: 'yes'
@@ -37,7 +37,7 @@ const movies = [
     director: {
       name: 'Quentin Tarantino',
       bio: 'Quentin Jerome Tarantino is an American film director, screenwriter, producer, author, film critic, and actor. His films are characterized by nonlinear storylines, dark humor, stylized violence, extended dialogue, ensemble casts, references to popular culture, alternate history, and neo-noir.',
-      born: '27.03.1963',
+      born: '1963-03-27',
       died: '-'
     },
     featured: 'yes'
@@ -55,7 +55,7 @@ const movies = [
     director: {
       name: 'Peter Jackson',
       bio: 'Sir Peter Robert Jackson is a New Zealand film director, producer, and screenwriter. He is best known as the director, writer, and producer of the Lord of the Rings trilogy (2001–03), a King Kong remake (2005) and the Hobbit trilogy (2012–14), both of trilogies are adapted from the novels of the same name by J. R. R. Tolkien. He is the third-highest-grossing film director of all time, his films having made over $6.5 billion worldwide.',
-      born: '31.10.1961',
+      born: '1961-10-31',
       died: '-'
     },
     featured: 'yes'
@@ -73,8 +73,8 @@ const movies = [
     director: {
       name: 'Irvin Kershner',
       bio: 'Irvin Kershner (born Isadore Kershner) was an American director, actor, and producer of film and television.',
-      born: '29.04.1923',
-      died: '27.11.2010'
+      born: '1923-04-29',
+      died: '2010-11-27'
     },
     featured: 'yes'
   },
@@ -90,8 +90,8 @@ const movies = [
     description: 'An artificial man, who was incompletely constructed and has scissors for hands, leads a solitary life. Then one day, a suburban lady meets him and introduces him to her world.',
     director: {
       name: 'Tim Burton',
-      bio: 'Timothy Walter Burton is an American film director, producer, writer, and artist known for his gothic fantasy and horror films such as Beetlejuice (1988), Edward Scissorhands (1990), Ed Wood (1994), Sleepy Hollow (1999), Corpse Bride (2005), Sweeney Todd: The Demon Barber of Fleet Street (2007), and Frankenweenie (2012). Burton also directed the superhero films Batman (1989) and Batman Returns (1992), the sci-fi film Planet of the Apes (2001), the fantasy-drama Big Fish (2003), the musical adventure film Charlie and the Chocolate Factory (2005), and the fantasy films Alice in Wonderland (2010) and Miss Peregrine\'s Home for Peculiar Children (2016).',
-      born: '25.08.1958',
+      bio: 'Timothy Walter Burton is an American film director, producer, writer, and artist known for his gothic fantasy and horror films.',
+      born: '1958-08-25',
       died: '-'
     },
     featured: 'yes'
@@ -109,7 +109,7 @@ const movies = [
     director: {
       name: 'Quentin Tarantino',
       bio: 'Quentin Jerome Tarantino is an American film director, screenwriter, producer, author, film critic, and actor. His films are characterized by nonlinear storylines, dark humor, stylized violence, extended dialogue, ensemble casts, references to popular culture, alternate history, and neo-noir.',
-      born: '27.03.1963',
+      born: '1963-03-27',
       died: '-'
     },
     featured: 'yes'
@@ -127,7 +127,7 @@ const movies = [
     director: {
       name: 'Jordan Peele',
       bio: 'Jordan Haworth Peele is an American actor, comedian and filmmaker. He is best known for his film and television work in the comedy and horror genres.',
-      born: '21.02.1979',
+      born: '1979-02-21',
       died: '-'
     },
     featured: 'yes'
@@ -138,14 +138,14 @@ const movies = [
     imageURL: 'https://image.tmdb.org/t/p/w1280/oljiDFPyMY437BRRV69AzVDSiKy.jpg',
     year: '2004',
     genre: {
-      gname: 'Animation',
-      gdescription: 'A film medium in which the film’s images are primarily created by computer or hand and the characters are voiced by actors.[17] Animation can otherwise incorporate any genre and subgenre[2] and is often confused as a genre itself.'
+      gname: 'Animated',
+      gdescription: 'A film medium in which the film’s images are primarily created by computer or hand and the characters are voiced by actors. Animation can otherwise incorporate any genre and subgenre and is often confused as a genre itself.'
     },
     description: 'Shrek and Fiona travel to the Kingdom of Far Far Away, where Fiona\'s parents are King and Queen, to celebrate their marriage. When they arrive, they find they are not as welcome as they thought they would be.',
     director: [
       {
         name: 'Andrew Adamson',
-        bio: 'Andrew Ralph Adamson MNZM (born 1 December 1966) is a New Zealander film director, producer, and screenwriter based in Los Angeles, where he directed the Academy Award-winning animated films Shrek and Shrek 2. He was director, executive producer, and scriptwriter for the 2005 production of The Chronicles of Narnia: The Lion, the Witch and the Wardrobe. He also worked on the movies Batman Forever and Batman & Robin as a visual effects supervisor.',
+        bio: 'Andrew Ralph Adamson is a New Zealander film director, producer, and screenwriter based in Los Angeles, where he directed the Academy Award-winning animated films Shrek and Shrek 2. He was director, executive producer, and scriptwriter for the 2005 production of The Chronicles of Narnia: The Lion, the Witch and the Wardrobe. He also worked on the movies Batman Forever and Batman & Robin as a visual effects supervisor.',
         born: '01.12.1966',
         died: '-'
       },
@@ -188,7 +188,7 @@ const movies = [
     imageURL: 'https://thedisneyblog.com/wp-content/uploads/2016/09/moana-poster-new.jpg',
     year: '2016',
     genre: {
-      gname: 'Animation',
+      gname: 'Animated',
       gdescription: 'A film medium in which the film’s images are primarily created by computer or hand and the characters are voiced by actors.[17] Animation can otherwise incorporate any genre and subgenre[2] and is often confused as a genre itself.'
     },
     description: 'In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana\'s island, she answers the Ocean\'s call to seek out the Demigod to set things right.',
