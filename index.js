@@ -212,18 +212,22 @@ const movies = [
 
 const users = [
   {
-  id: "1",
   username: 'JohnDoe',
   password: 'hisPassword123!',
   email: 'johnDoe@gmail.com',
   dob: '2000-06-21'
   },
   {
-  id: "2",
   username: 'JaneDoe',
   password: 'herPassword123!',
   email: 'janeDoe@gmail.com',
   dob: '1990-12-31'
+  },
+  {
+  username: 'Martin88',
+  password: 'S0m3Paswword',
+  email: 'martin.h@outlook.com',
+  dob: '1988-02-18'
   }
 ];
 
