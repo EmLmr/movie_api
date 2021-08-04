@@ -11,7 +11,10 @@ const movies = [
     title: 'The Grand Budapest Hotel',
     imageURL: 'https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1',
     year: '2014',
-    genre: 'Adventure',
+    genre: {
+      gname: 'Adventure',
+      gdescription: 'Implies a narrative that is defined by a journey (often including some form of pursuit) and is usually located within a fantasy or exoticized setting. Typically, though not always, such stories include the quest narrative. The predominant emphasis on violence and fighting in action films is the typical difference between the two genres.'
+    },
     description: 'A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel\'s glorious years under an exceptional concierge.',
     director: {
       name: 'Wes Anderson',
@@ -26,7 +29,10 @@ const movies = [
     title: 'Death Proof',
     imageURL: 'https://filmeserialegratis.org/wp-content/uploads/2020/04/dovada-mortii-79984-poster.jpg',
     year: '2007',
-    genre: 'Action',
+    genre: {
+      gname: 'Action',
+      gdescription: 'Associated with particular types of spectacle (e.g., explosions, chases, combat).'
+    },
     description: 'Two separate sets of voluptuous women are stalked at different times by a scarred stuntman who uses his "death proof" cars to execute his murderous plans.',
     director: {
       name: 'Quentin Tarantino',
@@ -41,7 +47,10 @@ const movies = [
     title: 'The Lord of the Rings: the Return of the King',
     imageURL: 'https://image.tmdb.org/t/p/original/uexxR7Kw1qYbZk0RYaF9Rx5ykbj.jpg',
     year: '2003',
-    genre: 'Action',
+    genre: {
+      gname: 'Action',
+      gdescription: 'Associated with particular types of spectacle (e.g., explosions, chases, combat).'
+    },
     description: 'Gandalf and Aragorn lead the World of Men against Sauron\'s army to draw his gaze from Frodo and Sam as they approach Mount Doom with the One Ring.',
     director: {
       name: 'Peter Jackson',
@@ -56,7 +65,10 @@ const movies = [
     title: 'Star Wars: Episode V - The Empire Strikes Back',
     imageURL: 'https://movieswithaplottwist.com/wp-content/uploads/2019/01/starwarsposter.jpg',
     year: '1980',
-    genre: 'Action',
+    genre: {
+      gname: 'Action',
+      gdescription: 'Associated with particular types of spectacle (e.g., explosions, chases, combat).'
+    },
     description: 'After the Rebels are brutally overpowered by the Empire on the ice planet Hoth, Luke Skywalker begins Jedi training with Yoda, while his friends are pursued across the galaxy by Darth Vader and bounty hunter Boba Fett.',
     director: {
       name: 'Irvin Kershner',
@@ -71,7 +83,10 @@ const movies = [
     title: 'Edward Scissorhands',
     imageURL: 'http://img.auctiva.com/imgdata/1/1/7/9/1/0/1/webimg/559134323_o.jpg',
     year: '1990',
-    genre: 'Drama',
+    genre: {
+      gname: 'Drama',
+      gdescription: 'Focused on emotions and defined by conflict, often looking to reality rather than sensationalism.'
+    },
     description: 'An artificial man, who was incompletely constructed and has scissors for hands, leads a solitary life. Then one day, a suburban lady meets him and introduces him to her world.',
     director: {
       name: 'Tim Burton',
@@ -86,7 +101,10 @@ const movies = [
     title: 'Django Unchained',
     imageURL: 'https://vignette2.wikia.nocookie.net/filmguide/images/b/bb/Django-unchained-final-american-movie-poster.jpg/revision/latest?cb=20150109055254',
     year: '2012',
-    genre: 'Drama',
+    genre: {
+      gname: 'Drama',
+      gdescription: 'Focused on emotions and defined by conflict, often looking to reality rather than sensationalism.'
+    },
     description: 'With the help of a German bounty-hunter, a freed slave sets out to rescue his wife from a brutal plantation-owner in Mississippi.',
     director: {
       name: 'Quentin Tarantino',
@@ -101,7 +119,10 @@ const movies = [
     title: 'Get Out',
     imageURL: 'https://image.tmdb.org/t/p/original/mE24wUCfjK8AoBBjaMjho7Rczr7.jpg',
     year: '2017',
-    genre: 'Horror',
+    genre: {
+      gname: 'Horror',
+      gdescription: 'A horror film is one that seeks to elicit fear or disgust in its audience for entertainment purposes. Horror films additionally aim to evoke viewers\' nightmares, revulsions and terror of the unknown or the macabre.'
+    },
     description: 'A young African-American visits his white girlfriend\'s parents for the weekend, where his simmering uneasiness about their reception of him eventually reaches a boiling point.',
     director: {
       name: 'Jordan Peele',
@@ -116,7 +137,10 @@ const movies = [
     title: 'Shrek 2',
     imageURL: 'https://image.tmdb.org/t/p/w1280/oljiDFPyMY437BRRV69AzVDSiKy.jpg',
     year: '2004',
-    genre: 'Animation',
+    genre: {
+      gname: 'Animation',
+      gdescription: 'A film medium in which the film’s images are primarily created by computer or hand and the characters are voiced by actors.[17] Animation can otherwise incorporate any genre and subgenre[2] and is often confused as a genre itself.'
+    },
     description: 'Shrek and Fiona travel to the Kingdom of Far Far Away, where Fiona\'s parents are King and Queen, to celebrate their marriage. When they arrive, they find they are not as welcome as they thought they would be.',
     director: [
       {
@@ -145,7 +169,10 @@ const movies = [
     title: 'Moonrise Kingdom',
     imageURL: 'https://is5-ssl.mzstatic.com/image/thumb/Video/v4/e8/14/c6/e814c6aa-6ff1-99f2-4d2b-45b045f4aff9/mza_901933579579271147.jpg/268x0w.jpg',
     year: '2012',
-    genre: 'Comedy',
+    genre: {
+      gname: 'Comedy',
+      gdescription: 'Defined by events that are primarily intended to make the audience laugh.'
+    },
     description: 'A pair of young lovers flee their New England town, which causes a local search party to fan out to find them.',
     director: {
       name: 'Wes Anderson',
@@ -160,7 +187,10 @@ const movies = [
     title: 'Moana',
     imageURL: 'https://thedisneyblog.com/wp-content/uploads/2016/09/moana-poster-new.jpg',
     year: '2016',
-    genre: 'Animation',
+    genre: {
+      gname: 'Animation',
+      gdescription: 'A film medium in which the film’s images are primarily created by computer or hand and the characters are voiced by actors.[17] Animation can otherwise incorporate any genre and subgenre[2] and is often confused as a genre itself.'
+    },
     description: 'In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana\'s island, she answers the Ocean\'s call to seek out the Demigod to set things right.',
     director: [
       {
