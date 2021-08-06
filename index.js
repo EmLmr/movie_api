@@ -146,19 +146,19 @@ const movies = [
       {
         name: 'Andrew Adamson',
         bio: 'Andrew Ralph Adamson is a New Zealander film director, producer, and screenwriter based in Los Angeles, where he directed the Academy Award-winning animated films Shrek and Shrek 2. He was director, executive producer, and scriptwriter for the 2005 production of The Chronicles of Narnia: The Lion, the Witch and the Wardrobe. He also worked on the movies Batman Forever and Batman & Robin as a visual effects supervisor.',
-        born: '01.12.1966',
+        born: '1966-12-01',
         died: '-'
       },
       {
         name: 'Kelly Asbury',
         bio: 'Kelly Adam Asbury was an American animated film director, screenwriter, voice actor, published children\'s book author/illustrator, and non-fiction author. He was best known for directing animated films, including Shrek 2, Spirit: Stallion of the Cimarron, Gnomeo & Juliet, Smurfs: The Lost Village, and UglyDolls.',
-        born: '15.01.1960',
-        died: '26.06.2020'
+        born: '1960-01-15',
+        died: '2020-06-26'
       },
       {
         name: 'Conrad Vernon',
         bio: 'Conrad Vernon was born on July 11, 1968 in Lubbock, Texas, USA as Conrad Vernon IV. He is an actor and producer, known for Shrek 2 (2004), Monsters vs. Aliens (2009) and Shrek (2001).',
-        born: '11.07.1968',
+        born: '1968-07-11',
         died: '-'
       }
     ],
@@ -177,7 +177,7 @@ const movies = [
     director: {
       name: 'Wes Anderson',
       bio: 'Wesley Wales Anderson is an American filmmaker. His films are known for their symmetry, eccentricity and distinctive visual and narrative styles, and he is cited by some critics as a modern-day example of the auteur. Three of his films – The Royal Tenenbaums, Moonrise Kingdom, and The Grand Budapest Hotel – appeared in BBC Culture\'s 2016 poll of the greatest films since 2000.',
-      born: '01.05.1969',
+      born: '1969-05-01',
       died: '-'
     },
     featured: 'yes'
@@ -195,14 +195,14 @@ const movies = [
     director: [
       {
         name: 'Ron Clements',
-        bio: 'Ronald Francis Clements (born April 25, 1953) is an American animator, screenwriter, film director and producer. He often collaborates with fellow director John Musker.',
-        born: '25.04.1953',
+        bio: 'Ronald Francis Clements is an American animator, screenwriter, film director and producer. He often collaborates with fellow director John Musker.',
+        born: '1953-04-25',
         died: '-'
       },
       {
         name: 'John Musker',
-        bio: 'John Edward Musker (born November 8, 1953) is an American animator, film director, screenwriter, and film producer. He often collaborates with fellow director Ron Clements.',
-        born: '08.11.1953',
+        bio: 'John Edward Musker is an American animator, film director, screenwriter, and film producer. He often collaborates with fellow director Ron Clements.',
+        born: '1953-11-08',
         died: '-'
       }
     ],
@@ -228,7 +228,19 @@ const users = [
   password: 'S0m3Paswword',
   email: 'martin.h@outlook.com',
   dob: '1988-02-18'
-  }
+},
+{
+username: 'WillS',
+password: 'ApWD',
+email: 'will.s@hotmail.com',
+dob: '1966-02-02'
+},
+{
+username: 'Sam',
+password: 'som3pwD',
+email: 'samantha.lewis@gmail.com',
+dob: '1970-05-11'
+}
 ];
 
 app.use(express.static('public'));

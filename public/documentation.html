@@ -46,140 +46,166 @@
       <table class="table table-striped table-hover table-bordered  align-middle w-75 m-auto">
         <thead>
           <tr class="table-info">
-            <th scope="col" class="col-3">Request</th>
-            <th scope="col" class="col-2">URL</th>
-            <th scope="col" class="col-1">HTTP method</th>
-            <th scope="col" class="col-2">Request format</th>
-            <th scope="col" class="col-4">Response format</th>
+            <th scope="col" class="col1">Request</th>
+            <th scope="col" class="col2">URL</th>
+            <th scope="col" class="col3">HTTP method</th>
+            <th scope="col" class="col4">Request format</th>
+            <th scope="col" class="col5">Response format</th>
           </tr>
         </thead>
         <tbody>
 
+          <!-- movie endpoints -->
+
           <tr>
-        <td>Return a list of ALL movies.</td>
-        <td>/movies</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>A JSON object holding data about all the movies.</td>
-      </tr>
+            <td>Return a list of ALL movies.</td>
+            <td>/movies</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about all the movies.</td>
+          </tr>
 
-      <tr>
-        <td>Return data about a single movie by title.</td>
-        <td>/movies/[Title]</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>A JSON object holding data about a single movie:
-          <br><code> {
-            <br> title: "The Grand Budapest Hotel",
-            <br> imageURL: "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1",
-            <br> year: "2014",
-            <br> genres: ["Adventure", "Comedy", "Crime"],
-            <br> description: "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
-            <br> director: {
-              <br> name: "Wes Anderson",
-              <br> bio: "Wesley Wales Anderson was born in Houston, Texas.[...]",
-              <br> born: "01.05.1969",
-              <br> died: "-"
-              <br> },
-              <br> featured: "yes"
-            <br>} </code>
-        </td>
-      </tr>
+          <tr>
+            <td>Return data about a single movie by title.</td>
+            <td>/movies/[Title]</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about a single movie:
+              <br><code> {
+                <br>"_id" : ObjectId("610bf2994c1ccf24bb4c74eb"),
+                <br> "title": "The Grand Budapest Hotel",
+                <br> "imageURL": "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fa4.mzstatic.com%2Fus%2Fr30%2FVideo%2Fv4%2F7c%2Fb7%2F7f%2F7cb77f12-7ba5-9737-4cd6-80ea26ab27be%2Fmza_1938055799826039024.jpg&f=1&nofb=1",
+                <br> "year": "2014",
+                <br> "genre": {
+                {
+                "Gname" : "Adventure",
+                "Gdescription" : "Implies a narrative that is defined by a journey (often including some form of pursuit) and is usually located within a fantasy or exoticized setting. Typically, though not always, such stories include the quest
+                narrative. The predominant emphasis on violence and fighting in action films is the typical difference between the two genres."
+                },
+                <br> "description": "A writer encounters the owner of an aging high-class hotel, who tells him of his early years serving as a lobby boy in the hotel's glorious years under an exceptional concierge.",
+                <br> "director": {
+                <br> "name": "Wes Anderson",
+                <br> "bio": "Wesley Wales Anderson is an American filmmaker. His films are known for their symmetry, eccentricity and distinctive visual and narrative styles, and he is cited by some critics as a modern-day example of the auteur.
+                Three of his films – The Royal Tenenbaums, Moonrise Kingdom, and The Grand Budapest Hotel – appeared in BBC Culture's 2016 poll of the greatest films since 2000.",
+                <br> "born": "1969-05-01",
+                <br> "died": "-"
+                <br> },
+                <br> "featured": <em>true or false</em>
+                <br>} </code>
+            </td>
+          </tr>
 
-      <tr>
-        <td>Return data about a genre by movie title.</td>
-        <td>/movies/genres/[Genre]</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>A JSON object holding data about a genre:
-          <br /><code> {
-            <br> genres: ["Adventure", "Comedy", "Crime"],
-            <br> title: "The Grand Budapest Hotel"
-          <br>} </code>
-        </td>
-      </tr>
+          <tr>
+            <td>Return data about a genre by movie title.</td>
+            <td>/movies/genres/[Genre]</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about a genre:
+              <br /><code> {
+                <br> "genre": {
+                {
+                "Gname" : "Adventure",
+                "Gdescription" : "Implies a narrative that is defined by a journey (often including some form of pursuit) and is usually located within a fantasy or exoticized setting. Typically, though not always, such stories include the quest
+                narrative. The predominant emphasis on violence and fighting in action films is the typical difference between the two genres."
+                }
+                <br>} </code>
+            </td>
+          </tr>
 
-      <tr>
-        <td>Return data about a director by name.</td>
-        <td>/movies/directors/[Name]</td>
-        <td>GET</td>
-        <td>None</td>
-        <td>A JSON object holding data about a director:
-          <br /><code> {
-            <br> name: "Wes Anderson"
-            <br> bio: "Wesley Wales Anderson was born in Houston, Texas.[...]",
-            <br> born: "01.05.1969"
-            <br> died: "-"
-          <br> } </code>
-        </td>
-      </tr>
+          <tr>
+            <td>Return data about a director by name.</td>
+            <td>/movies/directors/[Name]</td>
+            <td>GET</td>
+            <td>None</td>
+            <td>A JSON object holding data about a director:
+              <br /><code> {
+                <br> "director": {
+                <br> "name": "Wes Anderson",
+                <br> "bio": "Wesley Wales Anderson is an American filmmaker. His films are known for their symmetry, eccentricity and distinctive visual and narrative styles, and he is cited by some critics as a modern-day example of the auteur.
+                Three of his films – The Royal Tenenbaums, Moonrise Kingdom, and The Grand Budapest Hotel – appeared in BBC Culture's 2016 poll of the greatest films since 2000.",
+                <br> "born": "1969-05-01",
+                <br> "died": "-"
+                <br> }
+                <br> } </code>
+            </td>
+          </tr>
 
-      <tr>
-        <td>Allow new users to register.</td>
-        <td>/users</td>
-        <td>POST</td>
-        <td>A JSON object holding data about the registered users, based on the user's input
-          <br><code> {
-            <br> username: "JohnDoe"
-            <br> password: "myPassword123!"
-            <br> email: "johnDoe@gmail.com"
-            <br> dob: "2000-06-21"
-          <br> } </code>
-        </td>
-        <td>A response indicating whether the user was successfully registered.
-          <br>A JSON object holding data about the user that was registered, creating a unique user ID:
-          <br /><code> {
-            <br> id: 1,
-            <br> username: "JohnDoe",
-            <br> password: "myPassword123!",
-            <br> email: "johnDoe@gmail.com",
-            <br> dob: "2000-06-21"
-          <br> } </code>
-        </td>
-      </tr>
+          <!-- user endpoints -->
+          <tr>
+            <td>Allow new users to register.</td>
+            <td>/users</td>
+            <td>POST</td>
+            <td>A JSON object holding data about the registered users, based on the user's input
+              <br><code> {
+                <br> "username": "JohnDoe",
+                <br> "password": "myPassword123!",
+                <br> "email": "johnDoe@gmail.com",
+                <br> "birthday": "2000-06-21"
+                <br> } </code>
+            </td>
+            <td>A response indicating whether the user was successfully registered.
+              <br>A JSON object holding data about the user that was registered, creating a unique user ID:
+              <br /><code> {
+                <br> "_id": 1,
+                <br> "username": "JohnDoe",
+                <br> "password": "myPassword123!",
+                <br> "email": "johnDoe@gmail.com",
+                <br> "birthday": "2000-06-21"
+                <br> } </code>
+            </td>
+          </tr>
 
-      <tr>
-        <td>Allow users to update their username.</td>
-        <td>/users/[Username]</td>
-        <td>PUT</td>
-        <td>None</td>
-        <td>A plain text message indicating whether the user info was successfully updated or not</td>
-      </tr>
+          <tr>
+            <td>Allow users to update their username.</td>
+            <td>/users/[Username]</td>
+            <td>PUT</td>
+            <td>None</td>
+            <td>A plain text message indicating whether the user info was successfully updated or not</td>
+          </tr>
 
-      <tr>
-        <td>Allow existing users to deregister.</td>
-        <td>/users/[Username]</td>
-        <td>DELETE</td>
-        <td>A JSON object showing the current user data:
-          <br /><code> {
-            <br> id: 1,
-            <br> username: "JohnDoe",
-            <br> password: "myPassword123!",
-            <br> email: "johnDoe@gmail.com",
-            <br> dob: "2000-06-21"
-          <br> } </code></td>
-        <td>A plain text message indicating whether deregistration was successfull or not.</td>
-      </tr>
+          <tr>
+            <td>Allow existing users to deregister.</td>
+            <td>/users/[Username]</td>
+            <td>DELETE</td>
+            <td>A JSON object showing the current user data:
+              <br /><code> {
+                <br> "_id": 1,
+                <br> "username": "JohnDoe",
+                <br> "password": "myPassword123!",
+                <br> "email": "johnDoe@gmail.com",
+                <br> "birthday": "2000-06-21"
+                <br> "favoriteMovies: [<em>movie1</em>, <em>movie2</em>, ..., <em>movieN</em> ]"
+                <br> } </code>
+            </td>
+            <td>A plain text message indicating whether deregistration was successfull or not.</td>
+          </tr>
 
-      <tr>
-        <td>Allow users to add a movie to their list of favorites.</td>
-        <td>/users/[Username]/favorites/[Title]</td>
-        <td>PUT</td>
-        <td>None</td>
-        <td>A plain text message indicating whether the movie was successfully added or not.</td>
-      </tr>
+          <tr>
+            <td>Allow users to add a movie to their list of favorites.</td>
+            <td>/users/[Username]/favorites</td>
+            <td>PUT</td>
+            <td>None</td>
+            <td>A plain text message indicating whether the movie was successfully added or not, along with a JSON object showing the updated list of favorites.
+            <code> {
+              <br> "_id": 1,
+              <br> "username": "JohnDoe",
+              <br> "favoriteMovies: [<em>movie1</em>, <em>movie2</em>, ..., <em>movieN</em> ]"
+              <br> } </code></td>
+          </tr>
 
-      <tr>
-        <td>Allow users to remove a movie from their list of favorites.</td>
-        <td>/users/movies/[Favorites]</td>
-        <td>DELETE</td>
-        <td>A JSON object holding data about the movie that's just been added to the favorites:
-          <br> <code> {
-            <br> title: "title"
-          <br> } </code>
-        </td>
-        <td>A plain text message indicating whether the movie was successfully removed or not.</td>
-      </tr>
+          <tr>
+            <td>Allow users to remove a movie from their list of favorites.</td>
+            <td>/users/[Username]/favorites</td>
+            <td>DELETE</td>
+            <td>A JSON object holding data about the user's favorite movies:
+              <br> <code> {
+                <br> "_id": 1,
+                <br> "username": "JohnDoe",
+                <br> "favoriteMovies: [<em>movie1</em>, <em>movie2</em>, ..., <em>movieN</em> ]"
+                <br> } </code>
+            </td>
+            <td>A plain text message indicating whether the movie was successfully removed or not.</td>
+          </tr>
 
 
         </tbody>
