@@ -15,3 +15,11 @@ font-family: 'Montserrat', sans-serif;
 h3 {
   font-size: 20px;
 }
+
+.col1 {
+  min-width: 200px;
+}
+
+.col4 {
+  min-width: 200px;
+}
