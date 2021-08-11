@@ -11,6 +11,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+let auth = require('./auth')(app);
+const passport = require('passport');
+require('./passport');
 app.use(express.static('public'));
 app.use(morgan('common'));
 
@@ -37,7 +40,7 @@ app.get('/documentation', (req, res) => {
 });
 
 // Movie request - Return all movies.
-app.get('/movies', (req, res) => {
+app.get('/movies', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.find()
     .then((movies) => {
       res.status(201).json(movies);
@@ -49,7 +52,7 @@ app.get('/movies', (req, res) => {
 });
 
 // Movie request - Return data about a single movie, by title.
-app.get('/movies/:Title', (req, res) => {
+app.get('/movies/:Title', passport.authenticate('jwt', { session: false }), (req, res) => {
   Movies.findOne({
       Title: req.params.Title
     })
@@ -62,7 +65,7 @@ app.get('/movies/:Title', (req, res) => {
 });
 
 // Movie request - Return all genres.
-app.get('/genres', (req, res) => {
+app.get('/genres', passport.authenticate('jwt', { session: false }), (req, res) => {
   Genres.find()
     .then((genres) => {
       res.status(201).json(genres);
@@ -74,7 +77,7 @@ app.get('/genres', (req, res) => {
 });
 
 // Movie request - Return data about a genre, by genre name.
-app.get('/genres/:gname', (req, res) => {
+app.get('/genres/:gname', passport.authenticate('jwt', { session: false }), (req, res) => {
   Genres.findOne({
       Gname: req.params.Gname
     })
@@ -87,7 +90,7 @@ app.get('/genres/:gname', (req, res) => {
 });
 
 // Director request - Return all directors.
-app.get('/directors', (req, res) => {
+app.get('/directors', passport.authenticate('jwt', { session: false }), (req, res) => {
   Directors.find()
     .then((directors) => {
       res.status(201).json(directors);
@@ -99,7 +102,7 @@ app.get('/directors', (req, res) => {
 });
 
 // Director request - Return data about a director, by name.
-app.get('/directors/:name', (req, res) => {
+app.get('/directors/:name', passport.authenticate('jwt', { session: false }), (req, res) => {
   Directors.findOne({
       name: req.params.name
     })
@@ -124,7 +127,7 @@ app.get('/users', (req, res) => {
 });
 
 // User request - Return user by username.
-app.get('/users/:Username', (req, res) => {
+app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOne({
       Username: req.params.Username
     })
@@ -170,7 +173,7 @@ app.post('/users', (req, res) => {
 
 
 // User request - Allow users to update their user info (username, password, email, dob).
-app.put('/users/:Username', (req, res) => {
+app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({
       Username: req.params.Username
     }, {
@@ -194,7 +197,7 @@ app.put('/users/:Username', (req, res) => {
 });
 
 // User request - Allow existing users to deregister, by username.
-app.delete('/users/:Username', (req, res) => {
+app.delete('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndDelete({
     Username: req.params.Username
   }).then((user) => {
@@ -210,7 +213,7 @@ app.delete('/users/:Username', (req, res) => {
 });
 
 // User request - Allow users to add a movie to their favorites.
-app.post('/users/:Username/movies/:MovieID', (req, res) => {
+app.post('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $push: { FavoriteMovies: req.params.MovieID }
    },
@@ -226,7 +229,7 @@ app.post('/users/:Username/movies/:MovieID', (req, res) => {
 });
 
 // User request - Allow users to remove a movie from their favorites.
-app.delete('/users/:Username/movies/:MovieID', (req, res) => {
+app.delete('/users/:Username/movies/:MovieID', passport.authenticate('jwt', { session: false }), (req, res) => {
   Users.findOneAndUpdate({ Username: req.params.Username }, {
      $pull: { FavoriteMovies: req.params.MovieID }
    },
