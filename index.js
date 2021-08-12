@@ -5,15 +5,21 @@ const bodyParser = require('body-parser');
 const uuid = require('uuid');
 const mongoose = require('mongoose');
 const Models = require('./models.js');
+const { check, validationResult } = require('express-validator');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true
 }));
+
+const cors = require('cors');
+app.use(cors());
+
 let auth = require('./auth')(app);
 const passport = require('passport');
 require('./passport');
+
 app.use(express.static('public'));
 app.use(morgan('common'));
 
@@ -141,45 +147,77 @@ app.get('/users/:Username', passport.authenticate('jwt', { session: false }), (r
 });
 
 // User request - Allow new users to register.
-app.post('/users', (req, res) => {
-  Users.findOne({
-      Username: req.body.Username
-    })
-    .then((user) => {
-      if (user) {
-        return res.status(400).send(req.body.Username + 'already exists. Please choose another username.');
-      } else {
-        Users
-          .create({
-            Username: req.body.Username,
-            Password: req.body.Password,
-            Email: req.body.Email,
-            Birthday: req.body.Birthday
-          })
-          .then((user) => {
-            res.status(201).json(user)
-          })
-          .catch((error) => {
-            console.error(error);
-            res.status(500).send('Error: ' + error);
-          })
-      }
-    })
-    .catch((error) => {
-      console.error(error);
-      res.status(500).send('Error: ' + error);
-    });
-});
+app.post('/users',
+  [ // user input validation logic
+    check('Username', 'Username is required').isLength({min: 5}),
+    check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+    check('Password', 'Password is required').not().isEmpty(),
+    check('Email', 'Email does not appear to be valid').isEmail(),
+    check('Birthday', 'Invalid date format. Please use YYYY-MM-DD format.').isISO8601().toDate()
+  ], (req, res) => {
+    // check validation object for errors
+    let errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(422).json({ errors: errors.array() });
+    }
+
+    let hashedPassword = Users.hashPassword(req.body.Password); // stores the hashed password
+
+    Users.findOne({
+        Username: req.body.Username
+      })
+      .then((user) => {
+        if (user) {
+          return res.status(400).send(req.body.Username + 'already exists. Please choose another username.');
+        } else {
+          Users
+            .create({
+              Username: req.body.Username,
+              Password: hashedPassword, // creates hashed password
+              Email: req.body.Email,
+              Birthday: req.body.Birthday
+            })
+            .then((user) => {
+              res.status(201).json(user)
+            })
+            .catch((error) => {
+              console.error(error);
+              res.status(500).send('Error: ' + error);
+            })
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        res.status(500).send('Error: ' + error);
+      });
+  });
 
 
 // User request - Allow users to update their user info (username, password, email, dob).
-app.put('/users/:Username', passport.authenticate('jwt', { session: false }), (req, res) => {
+app.put('/users/:Username',
+[ // user input validation logic
+  check('Username', 'Username is required').isLength({min: 5}),
+  check('Username', 'Username contains non alphanumeric characters - not allowed.').isAlphanumeric(),
+  check('Password', 'Password is required').not().isEmpty(),
+  check('Email', 'Email does not appear to be valid').isEmail(),
+  check('Birthday', 'Invalid date format. Please use YYYY-MM-DD format.').isISO8601().toDate()
+  ],
+passport.authenticate('jwt', { session: false }),
+(req, res) => {
+  // check validation object for errors
+  let errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(422).json({ errors: errors.array() });
+  }
+
+  let hashedPassword = Users.hashPassword(req.body.Password); // stores the hashed password
+
   Users.findOneAndUpdate({
       Username: req.params.Username
     }, {
       $set: {
         Username: req.body.Username,
-        Password: req.body.Password,
+        Password: hashedPassword,
         Email: req.body.Email,
         Birthday: req.body.Birthday
       } // updates all the user info
