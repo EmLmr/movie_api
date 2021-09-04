@@ -164,7 +164,7 @@ app.post(
     check("Username", "Username contains non alphanumeric characters - not allowed.").isAlphanumeric(),
     check("Password", "Password is required").not().isEmpty(),
     check("Email", "Email does not appear to be valid").isEmail(),
-    check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
+//     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
   ],
   (req, res) => {
     // check validation object for errors
@@ -213,7 +213,7 @@ app.put(
     check("Username", "Username contains non alphanumeric characters - not allowed.").isAlphanumeric(),
     check("Password", "Password is required").not().isEmpty(),
     check("Email", "Email does not appear to be valid").isEmail(),
-    check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
+//     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
   ],
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
