@@ -16,7 +16,26 @@ app.use(
 );
 
 const cors = require("cors");
-app.use(cors());
+let allowedOrigins = [
+  "http://localhost:8080",
+  "https://flickspicks.herokuapp.com/",
+  "http://localhost:1234",
+  "https://flickspicks.netlify.app/",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.indexOf(origin) === -1) {
+        // If a specific origin isn’t found on the list of allowed origins
+        let message = "The CORS policy for this application doesn’t allow access from origin " + origin;
+        return callback(new Error(message), false);
+      }
+      return callback(null, true);
+    },
+  })
+);
 
 const passport = require("passport");
 require("./passport");
@@ -164,7 +183,7 @@ app.post(
     check("Username", "Username contains non alphanumeric characters - not allowed.").isAlphanumeric(),
     check("Password", "Password is required").not().isEmpty(),
     check("Email", "Email does not appear to be valid").isEmail(),
-//     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
+    //     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
   ],
   (req, res) => {
     // check validation object for errors
@@ -213,7 +232,7 @@ app.put(
     check("Username", "Username contains non alphanumeric characters - not allowed.").isAlphanumeric(),
     check("Password", "Password is required").not().isEmpty(),
     check("Email", "Email does not appear to be valid").isEmail(),
-//     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
+    //     check("Birthday", "Invalid date format. Please use YYYY-MM-DD format.").isISO8601().toDate(),
   ],
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
