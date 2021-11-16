@@ -20,7 +20,8 @@ let allowedOrigins = [
   "http://localhost:8080",
   "https://flickspicks.herokuapp.com/",
   "http://localhost:1234",
-  "https://flickspicks.netlify.app",
+  "https://flickspicks.netlify.app/",
+  "http://localhost:4200"
 ];
 
 app.use(
