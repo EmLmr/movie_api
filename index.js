@@ -50,6 +50,12 @@ require('./passport');
 
 app.use(express.static('public'));
 app.use(morgan('common'));
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true,
+  })
+);
 
 const Movies = Models.Movie;
 const Users = Models.User;
