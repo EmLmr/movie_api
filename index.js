@@ -22,6 +22,7 @@ let allowedOrigins = [
     'http://localhost:1234',
     'https://flickspicks.netlify.app',
     'http://localhost:4200',
+    'https://emlmr.github.io/FlicksPicks-Angular-client/'
 ];
 
 app.use(
