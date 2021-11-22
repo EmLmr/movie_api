@@ -19,10 +19,10 @@ const cors = require('cors');
 let allowedOrigins = [
     'http://localhost:8080',
     'https://flickspicks.herokuapp.com/',
+    'https://flickspicks.herokuapp.com',
     'http://localhost:1234',
     'https://flickspicks.netlify.app',
     'http://localhost:4200',
-    'https://emlmr.github.io/FlicksPicks-Angular-client/',
     'https://emlmr.github.io/',
     'https://emlmr.github.io',
     'https://emlmr.github.io/FlicksPicks-Angular-client/'
