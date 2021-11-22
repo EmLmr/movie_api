@@ -16,7 +16,7 @@ app.use(
 );
 
 const cors = require('cors');
-let allowedOrigins = [
+/* let allowedOrigins = [
     'http://localhost:8080',
     'https://flickspicks.herokuapp.com/',
     'https://flickspicks.herokuapp.com',
@@ -43,7 +43,8 @@ app.use(
             return callback(null, true);
         },
     })
-);
+); */
+app.use(cors());
 
 const passport = require('passport');
 require('./passport');
@@ -52,9 +53,9 @@ app.use(express.static('public'));
 app.use(morgan('common'));
 app.use(bodyParser.json());
 app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
+    bodyParser.urlencoded({
+        extended: true,
+    })
 );
 
 const Movies = Models.Movie;
