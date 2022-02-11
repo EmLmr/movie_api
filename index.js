@@ -16,7 +16,7 @@ app.use(
 );
 
 const cors = require('cors');
-/* let allowedOrigins = [
+let allowedOrigins = [
     'http://localhost:8080',
     'https://flickspicks.herokuapp.com/',
     'https://flickspicks.herokuapp.com',
@@ -43,7 +43,7 @@ app.use(
             return callback(null, true);
         },
     })
-); */
+);
 app.use(cors());
 
 const passport = require('passport');
